@@ -1,0 +1,48 @@
+.todoList-ctrl {
+    margin: 2rem 0 1rem 1rem;
+    padding: 1rem;
+
+}
+
+.todoList {
+    display: flex;
+}
+
+.todoList-input {
+    width: 50rem;
+    background-color: var(--gray);
+    border: none;
+    outline: none;
+    font-size: 40px;
+    padding: .5rem 1rem;
+    color: var(--gray-light);
+    border-radius: .3rem;
+    border-radius: .3rem;
+
+}
+
+.todoList-btn {
+    background-color: var(--gray);
+    border: none;
+    outline: none;
+    font-size: 30px;
+    color: var(--yellow);
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+    margin-left: 1rem;
+
+}
+
+
+.todoList-btn:hover {
+    cursor: pointer;
+    color: var(--yellow-hover);
+}
+
+.todolist-item {
+    margin: 3rem 1rem 0 1rem;
+
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
