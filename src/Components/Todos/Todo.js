@@ -2,28 +2,27 @@ import React, { useState } from 'react'
 import "./Todo.css"
 import { AiOutlineDelete } from "react-icons/ai";
 import { LiaSortSolid } from "react-icons/lia";
-import DeleteAllModal from '../DeleteAllModal/DeleteAllModal';
+import { AiOutlineArrowUp } from "react-icons/ai";
+import { AiOutlineArrowDown } from "react-icons/ai";
 
 
 
-export default function Todo({ onRemove, id, title }) {
+export default function Todo({ onRemove, up, down, id, title }) {
 
-    const [isShowDeleteTodoModal, setIsShowDeleteTodoModal] = useState(false)
 
     const deleteTodoHandler = (id) => {
 
         onRemove(id)
 
-        setIsShowDeleteTodoModal(true)
     }
 
-    const acceptDeleteTodo = () => {
-        setIsShowDeleteTodoModal(false)
+    const upHandler = (id) => {
+        up(id)
+    }
+    const downHandler = (id) => {
+        down(id)
+    }
 
-    }
-    const rejectDeleteTodo = () => {
-        setIsShowDeleteTodoModal(false)
-    }
 
     return (
 
@@ -33,18 +32,16 @@ export default function Todo({ onRemove, id, title }) {
 
                 <div className='todo-btnBox'>
                     <button className='todo-btnBox-btn'>
-                        <AiOutlineDelete className='todo-btnBox-btn-icon' onClick={() => deleteTodoHandler(id)}></AiOutlineDelete>
+                        <AiOutlineDelete className='todo-btnBox-btn-icon delete' onClick={() => deleteTodoHandler(id)}></AiOutlineDelete>
                     </button>
                     <button className='todo-btnBox-btn'>
-                        <LiaSortSolid className='todo-btnBox-btn-icon'></LiaSortSolid>
+                        <AiOutlineArrowUp className='todo-btnBox-btn-icon up' onClick={() => upHandler(id)}></AiOutlineArrowUp>
+                        <AiOutlineArrowDown className='todo-btnBox-btn-icon down' onClick={() => downHandler(id)}></AiOutlineArrowDown>
                     </button>
 
                 </div>
             </div>
-            {/* {isShowDeleteTodoModal &&
-                <DeleteAllModal
-                    accept={acceptDeleteTodo} reject={rejectDeleteTodo}
-                ></DeleteAllModal>} */}
+
         </>
     )
 }

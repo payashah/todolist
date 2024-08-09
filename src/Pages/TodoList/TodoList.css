@@ -41,8 +41,8 @@
 
 .todolist-item {
     margin: 3rem 1rem 0 1rem;
-
+    max-height: 30rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     flex-wrap: wrap;
 }

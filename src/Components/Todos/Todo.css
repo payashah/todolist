@@ -13,6 +13,7 @@
     align-items: center;
     border-radius: .3rem;
     margin: 1rem;
+    max-width: 40%;
 
 }
 
@@ -39,11 +40,23 @@
 
 }
 
-.todo-btnBox-btn:hover {
+
+.todo-btnBox-btn-icon {
+    font-size: 25px;
+    margin-left: .5rem;
+}
+
+.todo-btnBox-btn-icon.delete:hover {
     cursor: pointer;
     color: var(--yellow-hover);
 }
 
-.todo-btnBox-btn-icon {
-    font-size: 25px;
+.todo-btnBox-btn-icon.up:hover {
+    cursor: pointer;
+    color: var(--yellow-hover);
+}
+
+.todo-btnBox-btn-icon.down:hover {
+    cursor: pointer;
+    color: var(--yellow-hover);
 }
