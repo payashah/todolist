@@ -7,7 +7,7 @@ import { AiOutlineArrowDown } from "react-icons/ai";
 
 
 
-export default function Todo({ onRemove, up, down, id, title }) {
+export default function Todo({ index, onRemove, moveUp, moveDown, id, title }) {
 
 
     const deleteTodoHandler = (id) => {
@@ -17,10 +17,10 @@ export default function Todo({ onRemove, up, down, id, title }) {
     }
 
     const upHandler = (id) => {
-        up(id)
+        moveUp(id)
     }
     const downHandler = (id) => {
-        down(id)
+        moveDown(id)
     }
 
 

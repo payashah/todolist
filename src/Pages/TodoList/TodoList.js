@@ -35,17 +35,17 @@ export default function TodoList() {
         setIsShowDeleteAllModal(true)
     }
 
-    const removeTodo = (todoId) => {
+    const removeTodo = (todoId, index) => {
         let updatedTodoList = todos.filter(todo => {
             return todo.id !== todoId
         })
 
-        setTodos(updatedTodoList)
+        setTodos(updatedTodoList = updatedTodoList.map((todo, newIndex) => ({ ...todo, id: newIndex + 1 })))
 
     }
 
     const moveUpTodo = (index) => {
-        if (index > 0) {
+        if (index > 0 && index < todos.length) {
             const updatedTodoList = [...todos];
             [updatedTodoList[index - 1], updatedTodoList[index]] =
                 [updatedTodoList[index], updatedTodoList[index - 1]];
@@ -56,8 +56,8 @@ export default function TodoList() {
     const moveDownTodo = (index) => {
         if (index < todos.length - 1) {
             const updatedTodoList = [...todos];
-            [updatedTodoList[index], updatedTodoList[index + 1]] =
-                [updatedTodoList[index + 1], updatedTodoList[index]];
+            [updatedTodoList[index], updatedTodoList[index + 1]] = [updatedTodoList[index + 1], updatedTodoList[index]];
+
             setTodos(updatedTodoList)
         }
     }
@@ -85,13 +85,17 @@ export default function TodoList() {
                         todoTitle.trim() !== "" ? (<button className='todoList-btn' onClick={submitHandler} >Submit</button>)
                             : (<button className='todoList-btn' onClick={submitHandler} disabled style={{ color: "gray" }}>Submit</button>)
                     }
-                    <button className='todoList-btn' onClick={deleteAllModalHandler}  >Delete All</button>
+
+                    {
+                        todos.length > 0 ? (<button className='todoList-btn' onClick={deleteAllModalHandler}  >Delete All</button>)
+                            : (<button className='todoList-btn' onClick={deleteAllModalHandler} disabled style={{ color: "gray" }}  >Delete All</button>)
+                    }
                 </div>
 
             </form>
             <div className='todolist-item'>
                 {todos.map((todo, index) => (
-                    <Todo key={todo.id} {...todo} onRemove={removeTodo} up={moveUpTodo} down={moveDownTodo}></Todo>
+                    <Todo key={todo.id} {...todo} onRemove={removeTodo} moveUp={moveUpTodo} moveDown={moveDownTodo}></Todo>
                 ))}
 
 
